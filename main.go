@@ -18,16 +18,19 @@ func main() {
 		return
 	}
 
-	partName := os.Args[1]
-	targetFunc := parts[partName]
-	if targetFunc != nil {
-		targetFunc()
-	}
+	runTarget(os.Args[1])
 }
 
 func runAll() {
-	for name, targetFunc := range parts {
-		pf("Demo of %s:", name)
+	for name := range parts {
+		runTarget(name)
+	}
+}
+
+func runTarget(name string) {
+	targetFunc := parts[name]
+	pf("\n------ Demo of %s: -------", name)
+	if targetFunc != nil {
 		targetFunc()
 	}
 }

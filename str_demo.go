@@ -20,7 +20,6 @@ func StrDemo() {
 	}
 
 	// starts with
-	// strings.Start
 
 	// repeate
 

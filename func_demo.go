@@ -10,6 +10,26 @@ import (
 func FuncDemo() {
 
 	// arg types
+	fun1 := func(x int64, y float32, boolMark bool, nums []int, name string, options map[string]int, abc Abc) {
+		pf("(%d, %.3f, %v), nums: %v, name: %s, Abc(%d, %s, %c)", x, y, boolMark, nums, name, abc.a, abc.b, abc.c)
+		for k, v := range options {
+			pf("opt %s: %d", k, v)
+		}
+	}
+
+	abc1 := Abc{
+		a: 200,
+		b: "ABC b-val",
+		c: rune('Ъ'),
+	}
+
+	opts := map[string]int{
+		"opt-a": 1111,
+		"opt-b": 2222,
+		"opt-c": 3333,
+	}
+
+	fun1(100, 111.125009, true, []int{11, 22, 33}, "Big Vasya", opts, abc1)
 
 	// uncount args
 
@@ -21,12 +41,12 @@ func FuncDemo() {
 	pf("min = %.3f, max = %.3f, average = %.3f", min, max, average)
 
 	// struct and method
-	abc := Abc{
+	abc2 := Abc{
 		a: 10,
 		b: "test ABC",
 		c: rune('Ж'),
 	}
-	p(abc.info())
+	p(abc2.info())
 
 	// Closure 1 lvl
 	demoClosure()
